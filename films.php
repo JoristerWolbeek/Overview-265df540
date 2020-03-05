@@ -48,9 +48,13 @@ html{
 <a href="http://localhost/index.php">Terug</a>
 <?php  
 
-$stmt = $pdo->query("SELECT titel, duur, landVanAfkomst, omschrijving, uitkomstDatum, trailer FROM netland.movies WHERE id=$_GET[id];");
+$stmt = $pdo->query(
+    "SELECT titel, duur, landVanAfkomst, omschrijving, uitkomstDatum,
+trailer FROM netland.movies WHERE id=$_GET[id];"
+);
 while($info = $stmt->fetch()) {
-    echo("<h1>".$info['titel']."</h1><br><b>".$info["duur"]." Minuten </b><br><b>Land van afkomst </b>".$info["landVanAfkomst"]."<br><b>Beschrijving</b><br>".$info["omschrijving"]."<br><br><b>Uitgekomen op</b>".$info["uitkomstDatum"]."<br>"."<iframe src='https://www.youtube.com/embed/$info[trailer]'</iframe>");
+    echo("<h1>".$info['titel']."</h1><br><b>".$info["duur"]." Minuten </b><br><b>Land van afkomst </b>".$info["landVanAfkomst"].
+    "<br><b>Beschrijving</b><br>".$info["omschrijving"]."<br><br><b>Uitgekomen op</b>".$info["uitkomstDatum"]."<br>"."<iframe src='https://www.youtube.com/embed/$info[trailer]'></iframe>");
 }
 ?>
 
